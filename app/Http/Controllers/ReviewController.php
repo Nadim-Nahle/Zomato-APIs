@@ -12,6 +12,8 @@ class ReviewController extends Controller
         $review->name = $request->name;
         $review->message = $request->message;
         $review->rating = $request->rating;
+        $review->restaurant_id = $request->restaurant_id;
+        $review->user_id = $request->user_id;
         $review->save();
         
         return response()->json([

@@ -24,6 +24,6 @@ Route::get('/reviews', [ReviewController::class, 'getReviews']);
 Route::get('/review/{id?}', [ReviewController::class, 'getReview']);
 Route::post('/delete_review', [ReviewController::class, 'deleteReview']);
 
-
+Route::get('/reviewss/{id}/{name}', [ReviewController::class, 'getReviewss']);
 
 
