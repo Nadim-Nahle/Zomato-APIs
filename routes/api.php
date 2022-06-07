@@ -16,3 +16,4 @@ Route::post('/login', [UserController::class, 'logIn']);
 
 Route::post('/add_resto', [RestoController::class, 'addResto']);
 Route::get('/restos', [RestoController::class, 'getRestos']);
+Route::get('/resto/{id?}', [RestoController::class, 'getResto']);

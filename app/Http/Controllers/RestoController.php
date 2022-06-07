@@ -22,7 +22,21 @@ class RestoController extends Controller
         $restos = restaurant::all();
         return response()->json([
             "status" => "success",
-            "users" => $restos
+            "restaurants" => $restos
+        ],200);
+     }
+
+     public function getResto($id = null){
+        if($id){
+            $resto = restaurant::find($id);
+        }
+        else{
+            $resto = restaurant::all();
+        }
+        
+        return response()->json([
+            "status" => "success",
+            "restaurants" => $resto
         ],200);
      }
 }
