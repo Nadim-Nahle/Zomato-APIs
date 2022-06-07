@@ -33,7 +33,7 @@ class userController extends Controller
         $users = new users;
         $users->username = $request->username;
         $users->email = $request->email;
-        $users->password = $request->password;
+        $users->password = hash('sha256', $request->password);
         $users->type = "1";
         $users->save();
 
@@ -41,6 +41,35 @@ class userController extends Controller
         return response()->json([
             "status" => "Success"
         ], 200);
+    }
+
+    public function getUserType(){
+        $UserType = users::where("type")->get();
+        
+        return response()->json([
+            "status" => "Success",
+            "results" => $UserType
+        ], 200);
+    }
+
+    public function logIn(Request $request){
+        $email = $request->email;
+        $password = hash('sha256', $request->password);
+
+        $user = users::where('email', $email)->first();
+        
+        $newUser = $user->id;
+        if($password == $user->password){
+            return response()->json([
+                "status" => true,
+                "id" => $newUser
+            ], 200);
+        }
+        else{
+            return response()->json([
+                "status" => false,
+            ], 200);
+        }
     }
 }
 
