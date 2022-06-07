@@ -15,3 +15,4 @@ Route::get('/user_type', [UserController::class, 'getUserType']);
 Route::post('/login', [UserController::class, 'logIn']);
 
 Route::post('/add_resto', [RestoController::class, 'addResto']);
+Route::get('/restos', [RestoController::class, 'getRestos']);

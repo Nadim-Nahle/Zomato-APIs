@@ -17,4 +17,12 @@ class RestoController extends Controller
             "status" => "Success"
         ], 200);
     }
+
+    public function getRestos($id = null){
+        $restos = restaurant::all();
+        return response()->json([
+            "status" => "success",
+            "users" => $restos
+        ],200);
+     }
 }
