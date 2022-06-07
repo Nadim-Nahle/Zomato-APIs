@@ -40,6 +40,15 @@ class ReviewController extends Controller
             "reviews" => $review
         ],200);
      }
+
+     public function deleteReview(Request $request){
+         
+        Review::where('id',$request->id)->delete();
+        
+        return response()->json([
+            "success" => true,
+        ], 200);
+    }
 }
 
 
