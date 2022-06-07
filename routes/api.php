@@ -8,4 +8,5 @@ use App\Http\Controllers\userController;
 
 
 Route::get('/users', [UserController::class, 'getUsers']);
+Route::get('/user/{id?}', [UserController::class, 'getUser']);
 

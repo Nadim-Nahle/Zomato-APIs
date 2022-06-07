@@ -14,4 +14,18 @@ class userController extends Controller
             "users" => $users
         ],200);
      }
+    public function getUser($id = null){
+        if($id){
+            $user = users::find($id);
+        }
+        else{
+            $user = users::all();
+        }
+        
+        return response()->json([
+            "status" => "success",
+            "users" => $user
+        ],200);
+     }
 }
+
