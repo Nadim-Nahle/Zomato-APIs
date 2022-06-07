@@ -27,5 +27,19 @@ class ReviewController extends Controller
         ],200);
      }
 
-     
+     public function getReview($id = null){
+        if($id){
+            $review = Review::find($id);
+        }
+        else{
+            $review = Review::all();
+        }
+        
+        return response()->json([
+            "status" => "success",
+            "reviews" => $review
+        ],200);
+     }
 }
+
+
