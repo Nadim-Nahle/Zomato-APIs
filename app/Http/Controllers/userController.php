@@ -15,6 +15,7 @@ class userController extends Controller
             "users" => $users
         ],200);
      }
+
     public function getUser($id = null){
         if($id){
             $user = users::find($id);
@@ -57,19 +58,27 @@ class userController extends Controller
         $password = hash('sha256', $request->password);
 
         $user = users::where('email', $email)->first();
-        
-        $newUser = $user->id;
-        if($password == $user->password){
-            return response()->json([
-                "status" => true,
-                "id" => $newUser
-            ], 200);
-        }
-        else{
+        if ($user == null){
             return response()->json([
                 "status" => false,
             ], 200);
         }
+        
+        else{
+            $newUser = $user->id;
+            if($password == $user->password && $email == $user->email ){
+                return response()->json([
+                    "status" => true,
+                    "id" => $newUser
+                ], 200);
+            }
+            else{
+                return response()->json([
+                    "status" => false,
+                ], 200);
+            }
+        }
+        
     }
 
     
