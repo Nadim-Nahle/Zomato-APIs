@@ -31,7 +31,7 @@ class userController extends Controller
      }
 
      public function signUp(request $request){
-        $users = new users;
+        $users = new Users;
         $users->username = $request->username;
         $users->email = $request->email;
         $users->password = hash('sha256', $request->password);

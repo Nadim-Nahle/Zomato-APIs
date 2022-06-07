@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\userController;
 use App\Http\Controllers\RestoController;
+use App\Http\Controllers\ReviewController;
 
 
 
@@ -17,4 +18,10 @@ Route::post('/login', [UserController::class, 'logIn']);
 Route::post('/add_resto', [RestoController::class, 'addResto']);
 Route::get('/restos', [RestoController::class, 'getRestos']);
 Route::get('/resto/{id?}', [RestoController::class, 'getResto']);
+
+Route::post('/add_review', [ReviewController::class, 'addReview']);
+Route::get('/reviews', [ReviewController::class, 'getReviews']);
+
+
+
 
