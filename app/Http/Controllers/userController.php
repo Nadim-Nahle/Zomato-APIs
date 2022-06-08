@@ -65,11 +65,11 @@ class userController extends Controller
         }
         
         else{
-            $newUser = $user->id;
+            $userType = $user->type;
             if($password == $user->password && $email == $user->email ){
                 return response()->json([
                     "status" => true,
-                    "id" => $newUser
+                    "type" => $userType
                 ], 200);
             }
             else{
